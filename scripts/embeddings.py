@@ -35,7 +35,7 @@ def load_tokenizer(tokenizer_file):
 
 # Function to calculate embeddings from the DNA sequence
 def calculate_embeddings(model, tokenizer, sequence, device):
-    input_ids = tokenizer.encode(sequence.upper(), return_tensors='pt').to(device)
+    input_ids = tokenizer.encode(sequence.upper(), return_tensors='pt',truncation=True, max_length=2048).to(device)
     
     # Inference to obtain hidden states
     with torch.no_grad():
